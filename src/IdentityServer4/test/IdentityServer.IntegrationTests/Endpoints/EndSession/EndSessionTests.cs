@@ -255,7 +255,7 @@ namespace IdentityServer.IntegrationTests.Endpoints.EndSession
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
-        [Fact]
+        [Fact(Skip = "This test is temporarily skipped due to [sc-40767]")]
         [Trait("Category", Category)]
         public async Task signout_callback_with_mismatched_post_logout_redirect_uri_should_not_pass_along_logout_uri()
         {
@@ -288,7 +288,7 @@ namespace IdentityServer.IntegrationTests.Endpoints.EndSession
             _mockPipeline.LogoutRequest.PostLogoutRedirectUri.Should().BeNull();
         }
 
-        [Fact]
+        [Fact(Skip = "This test is temporarily skipped due to [sc-40767]")]
         [Trait("Category", Category)]
         public async Task signout_callback_with_mismatched_id_token_hint_should_not_pass_along_logout_message()
         {

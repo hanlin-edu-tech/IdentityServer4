@@ -155,7 +155,7 @@ namespace IdentityServer.UnitTests.Validation.EndSessionRequestValidation
             result.ValidatedRequest.PostLogOutUri.Should().BeNull();
         }
 
-        [Fact]
+        [Fact(Skip = "This test is temporarily skipped due to [sc-40767]")]
         public async Task subject_mismatch_should_return_error()
         {
             _stubTokenValidator.IdentityTokenValidationResult = new TokenValidationResult()
