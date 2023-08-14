@@ -1,0 +1,16 @@
+﻿timeout: 7200s
+steps:
+#AWS decrypt
+- name: gcr.io/cloud-builders/gcloud
+  args:
+    - 'kms'
+    - 'decrypt'
+    - '--ciphertext-file=nuget.prod.json.enc'
+    - '--plaintext-file=/workspace/nuget.json'
+    - '--location=global'
+    - '--keyring=cloud-builder'
+    - '--key=cloud-builder'
+##build console and push package to nuget
+- name: mcr.microsoft.com/dotnet/core/sdk:3.1
+  entrypoint: 'bash'
+  args: ['-c', './build.sh && ./push-nuget-package.sh']
