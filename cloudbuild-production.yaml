@@ -12,5 +12,7 @@ steps:
     - '--key=cloud-builder'
 ##build console and push package to nuget
 - name: mcr.microsoft.com/dotnet/core/sdk:3.1
+  env:
+    - 'MinVerVersionOverride=$TAG_NAME'
   entrypoint: 'bash'
   args: ['-c', './build.sh && ./push-nuget-package.sh']
