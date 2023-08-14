@@ -1,6 +1,11 @@
 #!/bin/bash
 
-apt-get install -y jq
+set -e  # Exit immediately if a command exits with a non-zero status.
+
+# Install jq if not already installed
+if ! command -v jq &> /dev/null; then
+apt-get update && apt-get install -y jq
+fi
 
 NUGET_ENV="nuget.json"
 NUGET_SOURCE="http://ehanlin-nuget-695959454.ap-northeast-1.elb.amazonaws.com/v3/index.json"
